@@ -1,0 +1,208 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* LIGHT MODE — calm neutral canvas, white surfaces */
+  :root {
+    /* Layer scale: base < sidebar < surface < elevated < interactive < hover < selected < overlay */
+    --bg-base: #f4f5f7;
+    --bg-sidebar: #fafbfc;
+    --bg-surface: #ffffff;
+    --bg-elevated: #ffffff;
+    --bg-interactive: #eef0f4;
+    --bg-hover: #f0f1f5;
+    --bg-selected: #e7eaf1;
+    --bg-overlay: rgba(16, 24, 40, 0.45);
+
+    --border-subtle: #eceff3;
+    --border-default: #e0e5eb;
+    --border-strong: #c3cad5;
+
+    --text-primary: #101828;
+    --text-secondary: #475467;
+    --text-tertiary: #98a2b3;
+    --text-inverse: #ffffff;
+    --bg-inverse: #17171a;
+
+    --risk-critical: #d92d20;
+    --risk-high: #ec4a0a;
+    --risk-moderate: #b54708;
+    --risk-low: #039855;
+    --status-info: #1570ef;
+    --status-success: #039855;
+    --status-warning: #d97706;
+    --status-error: #d92d20;
+
+    /* Restrained brand accent — used sparingly: focus, active nav, primary actions */
+    --accent: #4f58c4;
+    --accent-hover: #434ba8;
+    --accent-muted: rgba(79, 88, 196, 0.1);
+
+    /* Quiet diffused shadows */
+    --shadow-card: 0 1px 2px rgba(16, 24, 40, 0.05), 0 1px 3px rgba(16, 24, 40, 0.06);
+    --shadow-pop: 0 4px 12px rgba(16, 24, 40, 0.08), 0 12px 32px -8px rgba(16, 24, 40, 0.16);
+
+    --overlay: rgba(16, 24, 40, 0.45);
+    --focus-ring: rgba(79, 88, 196, 0.4);
+    /* RGB triplets enable Tailwind opacity modifiers (<alpha-value>) */
+    --risk-critical-rgb: 217 45 32;
+    --risk-high-rgb: 236 74 10;
+    --risk-moderate-rgb: 181 71 8;
+    --risk-low-rgb: 3 152 85;
+    --status-info-rgb: 21 112 239;
+    --status-success-rgb: 3 152 85;
+    --status-warning-rgb: 217 119 6;
+    --status-error-rgb: 217 45 32;
+    --accent-rgb: 79 88 196;
+    --bg-base-rgb: 244 245 247;
+    --bg-surface-rgb: 255 255 255;
+    --bg-hover-rgb: 240 241 245;
+    --text-primary-rgb: 16 24 40;
+    --text-secondary-rgb: 71 84 103;
+    --text-tertiary-rgb: 152 162 179;
+  }
+
+  /* DARK MODE — restrained neutral zinc scale, quiet borders, no glow */
+  .dark {
+    --bg-base: #0a0a0c;
+    --bg-sidebar: #07080a;
+    --bg-surface: #101114;
+    --bg-elevated: #15161b;
+    --bg-interactive: #1a1c22;
+    --bg-hover: #1d1f26;
+    --bg-selected: #23262e;
+    --bg-overlay: rgba(0, 0, 0, 0.6);
+
+    --border-subtle: rgba(255, 255, 255, 0.04);
+    --border-default: rgba(255, 255, 255, 0.07);
+    --border-strong: rgba(255, 255, 255, 0.13);
+
+    --text-primary: #f4f4f5;
+    --text-secondary: #a1a1aa;
+    --text-tertiary: #7c7c85;
+    --text-inverse: #0a0a0c;
+    --bg-inverse: #ffffff;
+
+    /* Semantic risk colors — signals, not decoration */
+    --risk-critical: #f87171;
+    --risk-high: #fb923c;
+    --risk-moderate: #fbbf24;
+    --risk-low: #4ade80;
+    --status-info: #60a5fa;
+    --status-success: #34d399;
+    --status-warning: #fbbf24;
+    --status-error: #f87171;
+
+    --accent: #6c76d8;
+    --accent-hover: #7d86e2;
+    --accent-muted: rgba(108, 118, 216, 0.12);
+
+    /* Lit-from-above hairline + tight drop — no atmospheric glow */
+    --shadow-card: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 1px 2px rgba(0, 0, 0, 0.35);
+    --shadow-pop: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 16px 40px -12px rgba(0, 0, 0, 0.6);
+
+    --overlay: rgba(0, 0, 0, 0.6);
+    --focus-ring: rgba(108, 118, 216, 0.5);
+    /* RGB triplets enable Tailwind opacity modifiers (<alpha-value>) */
+    --risk-critical-rgb: 248 113 113;
+    --risk-high-rgb: 251 146 60;
+    --risk-moderate-rgb: 251 191 36;
+    --risk-low-rgb: 74 222 128;
+    --status-info-rgb: 96 165 250;
+    --status-success-rgb: 52 211 153;
+    --status-warning-rgb: 251 191 36;
+    --status-error-rgb: 248 113 113;
+    --accent-rgb: 108 118 216;
+    --bg-base-rgb: 10 10 12;
+    --bg-surface-rgb: 16 17 20;
+    --bg-hover-rgb: 29 31 38;
+    --text-primary-rgb: 244 244 245;
+    --text-secondary-rgb: 161 161 170;
+    --text-tertiary-rgb: 124 124 133;
+  }
+
+  /* Refined scrollbars */
+  .dark ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  .dark ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .dark ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    border: 2px solid var(--bg-base);
+  }
+  .dark ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+  /* Firefox: native scrollbar properties (webkit rules don't apply) */
+  .dark, .dark * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.14) transparent;
+  }
+
+  body {
+    background-color: var(--bg-base);
+    color: var(--text-primary);
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: var(--accent-muted);
+    color: var(--text-primary);
+  }
+
+  *:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--bg-surface), 0 0 0 4px var(--focus-ring);
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  .text-display { @apply text-3xl font-semibold text-text-primary tracking-tight tabular-nums; }
+  .text-page-title { @apply text-2xl font-medium text-text-primary tracking-tight; }
+  .text-section-title { @apply text-lg font-medium text-text-primary tracking-tight; }
+  .text-card-title { @apply text-sm font-semibold text-text-primary; }
+  .text-body { @apply text-sm font-normal text-text-primary; }
+  .text-body-secondary { @apply text-sm font-normal text-text-secondary; }
+  .text-caption { @apply text-xs font-normal text-text-tertiary; }
+  .text-label { @apply text-xs font-medium text-text-tertiary tracking-normal; }
+  .text-table-cell { @apply text-sm font-normal text-text-primary tabular-nums; }
+  .text-technical { @apply font-mono text-xs text-text-secondary tabular-nums tracking-normal; }
+}
+
+@layer utilities {
+  .motion-interactive {
+    @apply transition-all duration-150 ease-out active:scale-[0.98];
+  }
+
+  .animate-backdrop {
+    animation: none !important;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(4px);
+    transition: background-color 200ms ease;
+  }
+}
+
+/* Global Reduced Motion Compliance */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Premium Theme Transition */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.4s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
